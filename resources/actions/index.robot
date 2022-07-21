@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    Mapeamento das acoes da pagina index.htm
 
-# DSL
+# DSL = Domain Specific Language
 *** Keywords ***
 Selecionar origem e destino do voo
    [Arguments]  ${origem}   ${destino}
