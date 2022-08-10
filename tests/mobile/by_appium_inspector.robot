@@ -2,12 +2,10 @@
 Library           AppiumLibrary
 
 Test Teardown   Quit Application
-# Suite Teardown  Close Application
+Suite Teardown  Close Application
 
 *** Variables ***
-${Sauce_Username}   InstrutorIterasys11
-${Sauce_Access_Key} 90239964-f3e8-43ef-bab3-5e56b496ba6c
-${REMOTE_URL}       http://${Sauce_Username}:${Sauce_Access_Key}@ondemand.us-west-1.saucelabs.com:80/wd/hub
+${REMOTE_URL}      https://InstrutorIterasys11:90239964-f3e8-43ef-bab3-5e56b496ba6c@ondemand.us-west-1.saucelabs.com:443/wd/hub
 ${platformName}    Android
 ${appium:platformVersion}    9.0
 ${appium:appiumVersion}    1.22.0
@@ -16,10 +14,10 @@ ${appium:deviceOrientation}    portrait
 ${appium:app}    storage:filename=mda-1.0.13-15.apk
 ${appium:appPackage}    com.saucelabs.mydemoapp.android
 ${appium:appActivity}    com.saucelabs.mydemoapp.android.view.activities.SplashActivity
-${appium:ensureWebviewsHavePages}    True
-${appium:nativeWebScreenshot}    True
-${appium:newCommandTimeout}    0
-${appium:connectHardwareKeyboard}    True
+${appium:ensureWebviewsHavePages}       true
+${appium:nativeWebScreenshot}           true
+${appium:newCommandTimeout}             0
+${appium:connectHardwareKeyboard}       true
 
 
 *** Test Cases ***
@@ -28,30 +26,28 @@ Test case name
     # xpath=//android.widget.ImageView[@content-desc="Sauce Lab Bolt T-Shirt"]
     Click Element    xpath=//android.widget.ImageView[@content-desc="Sauce Lab Bolt T-Shirt"]
     # id=com.saucelabs.mydemoapp.android:id/productTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/productTV
+    Element Should Contain Text    id=com.saucelabs.mydemoapp.android:id/productTV  Sauce Lab Bolt T-Shirt
     # id=com.saucelabs.mydemoapp.android:id/priceTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/priceTV
+    Element Should Contain Text    id=com.saucelabs.mydemoapp.android:id/priceTV    $ 15.99
     Swipe    490    1978    511    1384
     # id=com.saucelabs.mydemoapp.android:id/noTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/noTV
+    Element Should Contain Text    id=com.saucelabs.mydemoapp.android:id/noTV       1
     # accessibility id=Increase item quantity
-    Click Element    accessibility id=Increase item quantity
+    Click Element    accessibility_id=Increase item quantity
     # accessibility id=Tap to add product to cart
-    Click Element    accessibility id=Tap to add product to cart
-    # id=com.saucelabs.mydemoapp.android:id/cartTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/cartTV
-    # id=com.saucelabs.mydemoapp.android:id/productTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/productTV
+    Click Element    accessibility_id=Tap to add product to cart
+    # Clique no icone do carrinho de compras
+    Click Element   id=com.saucelabs.mydemoapp.android:id/cartTV
+    # Validar se está na página do carrinho
+    Element Should Contain Text     id=com.saucelabs.mydemoapp.android:id/productTV    My Cart
     # id=com.saucelabs.mydemoapp.android:id/titleTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/titleTV
+    Element Should Contain Text     id=com.saucelabs.mydemoapp.android:id/titleTV      Sauce Lab Bolt T-Shirt
     # id=com.saucelabs.mydemoapp.android:id/priceTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/priceTV
-    # accessibility id=Displays color of selected product
-    Click Element    accessibility id=Displays color of selected product
+    Element Should Contain Text     id=com.saucelabs.mydemoapp.android:id/priceTV      $ 15.99
     # id=com.saucelabs.mydemoapp.android:id/noTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/noTV
+    Element Should Contain Text     id=com.saucelabs.mydemoapp.android:id/noTV         10
     # id=com.saucelabs.mydemoapp.android:id/itemsTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/itemsTV
+    Element Should Contain Text     id=com.saucelabs.mydemoapp.android:id/itemsTV      10 Items
     # id=com.saucelabs.mydemoapp.android:id/totalPriceTV
-    Click Element    id=com.saucelabs.mydemoapp.android:id/totalPriceTV
+    Element Should Contain Text     id=com.saucelabs.mydemoapp.android:id/totalPriceTV  $ 159.90
 
